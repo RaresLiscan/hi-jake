@@ -1,10 +1,11 @@
-# Level 2
-During this level, you will create the `Register` page.
+# Level 3
+If you got so far, you can consider yourslf a `React Native connoisseur`. During this stage, you will only add some content to the `Homepage`, so it will not seem that empty
 
 ## Note: Before starting the process, change the `API_URL` from `auth.service.js` to your local IPv4 address
 
 Steps
-1. Open `Login.js`
-2. Add 2 text fields: email, password and style them as you please
-3. Call the `login` function from the auth service and check if you recieve back a JWT token
-4. After the user is logged in, navigate them to the homepage
+1. Open `Homepage.js`
+2. Add some text
+3. Display the JWT token from AuthService
+
+Gongratulations! You completed the challenge!
