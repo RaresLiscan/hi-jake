@@ -8,12 +8,9 @@ const Login = ({ navigation }) => {
     const [password, setPassword] = useState("");
 
     const loginUser = () => {
-        // fetch("http://localhost:8081/")
-        //     .then(response => console.log(response))
-        //     .catch(error => console.error(error))
         login(email, password)
             .then(response => {
-                console.log(response);
+                navigation.navigate("Homepage");
             })
             .catch(error => console.error(error));
     }

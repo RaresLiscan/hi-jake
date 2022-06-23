@@ -11,7 +11,7 @@ app.use(cors());
 
 
 app.use('/auth', authRoutes);
-app.use(authMiddleware.AuthGuard);
+// app.use(authMiddleware.AuthGuard);
 
 app.get('', (req, res) => {
     console.log("hello!");

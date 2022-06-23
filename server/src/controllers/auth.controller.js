@@ -23,7 +23,7 @@ const register = async (request, response) => {
     if (account === []) {
         response.send(500);
     }
-    response.send(jwt.sign(account));
+    response.send({ status: "User registered" });
 }
 
 module.exports = { login, register };

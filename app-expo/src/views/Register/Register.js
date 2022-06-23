@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import { View, Text, Button, SafeAreaView, StyleSheet, TextInput } from "react-native";
-import { login } from '../../services/auth.service';
+import { register } from '../../services/auth.service';
 
-const Login = ({ navigation }) => {
+const Register = ({ navigation }) => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
-    const loginUser = () => {
-        // fetch("http://localhost:8081/")
-        //     .then(response => console.log(response))
-        //     .catch(error => console.error(error))
-        login(email, password)
-            .then(response => {
-                console.log(response);
+    const registerUser = () => {
+        register(email, password, confirmPassword)
+            .then(() => {
+                navigation.navigate("Login");
             })
             .catch(error => console.error(error));
     }
@@ -41,11 +39,22 @@ const Login = ({ navigation }) => {
                     secureTextEntry={true}
                 />
             </View>
-            <View style={styles.button}>
-                <Button title="Login" color={'green'} onPress={() => loginUser()} />
+            <View style={styles.inputContainer}>
+                <TextInput
+                    placeholder="Confirm password..."
+                    placeholderTextColor={"#8f8f8f"}
+                    style={styles.input}
+                    onChangeText={(text) => setConfirmPassword(text)}
+                    value={confirmPassword}
+                    textContentType='password'
+                    secureTextEntry={true}
+                />
             </View>
             <View style={styles.button}>
-                <Button title="No account? Create one here" color={'gray'} onPress={() => navigation.navigate("Register")} />
+                <Button title="Register" color={'green'} onPress={() => registerUser()} />
+            </View>
+            <View style={styles.button}>
+                <Button title="Already have an account? Login" color={'gray'} onPress={() => navigation.navigate("Login")} />
             </View>
         </SafeAreaView>
     )
@@ -74,4 +83,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Login;
+export default Register;

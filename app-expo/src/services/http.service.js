@@ -12,7 +12,6 @@ export const HTTPService = {
     },
 
     post: async (url, body) => {
-        console.log(body);
         const response = await fetch(url, {
             method: "POST",
             headers: {
@@ -22,9 +21,9 @@ export const HTTPService = {
                 cors: 'cors',
             },
             body: JSON.stringify(body),
-        });
-        console.log(response);
-        return true;
+        })
+            .then(response => response.json());
+        return response;
     },
 
     put: async (url, body) => {

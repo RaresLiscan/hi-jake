@@ -23,8 +23,6 @@ async function loginQuery(database, email) {
 }
 
 async function registerQuery(database, email, password) {
-    console.log(email);
-    console.log(password);
     const users = database.collection('users');
 
     try {
