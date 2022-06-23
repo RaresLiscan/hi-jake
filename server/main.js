@@ -2,7 +2,7 @@ const express = require('express')
 const dotenv = require('dotenv');
 const cors = require('cors');
 const authRoutes = require('./src/routes/auth.route');
-const authMiddleware = require('./src/middleware/auth.middleware');
+const { MongoClient } = require('mongodb');
 
 const app = express();
 app.use(express.json());
@@ -11,11 +11,18 @@ app.use(cors());
 
 
 app.use('/auth', authRoutes);
-// app.use(authMiddleware.AuthGuard);
 
 app.get('', (req, res) => {
     console.log("hello!");
     res.send("Hello!");
+})
+
+app.get('/test-mongo', async (req, res) => {
+    const client = new MongoClient(process.env.MONGO_CLIENT_URI);
+    await client.connect();
+    console.log("Mongo connected");
+    await client.close();
+    res.sendStatus(200);
 })
 
 app.listen(process.env.PORT, () => {
